@@ -3,7 +3,7 @@ name: Push data to Elasticsearch
 on:
   workflow_run:
     workflows: ["Validate JSONs"]
-    branches: ["elastic-search"]
+    branches: ["main"]
     types: [completed]
 
 jobs:
