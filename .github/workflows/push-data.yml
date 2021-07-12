@@ -1,13 +1,17 @@
 name: Push data to Elasticsearch
 
 on:
-  pull_request:
-  push:
+  workflow_run:
+    workflows:
+      - validate_json
     branches:
       - "elastic-search"
+    types:
+      - completed
 
 jobs:
   push_to_elasticsearch:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
